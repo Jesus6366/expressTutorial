@@ -1,18 +1,3 @@
-// SERVER ONLY WITH NODE.JS
-
-// const http = require("http");
-
-// const fs = require("fs");
-
-// const server = http.createServer((req, res) => {
-//   const read = fs.createReadStream("./static/index.html");
-
-//   read.pipe(res);
-// });
-
-// server.listen(3000);
-// console.log(`server on port 3000`);
-
 // SERVER WITH EXPRESS
 const express = require("express");
 
@@ -20,21 +5,27 @@ const express = require("express");
 const app = express();
 
 // routing / routes
-app.get("/", (req, res) => {
-  res.send("Hello world");
+app.get("/products", (req, res) => {
+  // validate data
+  // query a database
+  // process data
+  res.send("product list ");
 });
 
-app.get("/about", (req, res) => {
-  res.send("about");
+app.post("/products", (req, res) => {
+  res.send("creating products... ");
 });
 
-app.get("/weather", (req, res) => {
-  res.send("The current weather is nice");
+app.put("/products", (req, res) => {
+  res.send("uptading a product");
 });
 
-// any other route that does not exist
-app.use((req, res) => {
-  res.status(404).send("Page not found");
+app.delete("/products", (req, res) => {
+  res.send("deleting a product");
+});
+
+app.patch("/products", (req, res) => {
+  res.send("updating a part of a product...");
 });
 
 const PORT = 3000;
