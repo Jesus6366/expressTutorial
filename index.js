@@ -19,8 +19,22 @@ const express = require("express");
 // servidor app
 const app = express();
 
+// routing / routes
 app.get("/", (req, res) => {
   res.send("Hello world");
+});
+
+app.get("/about", (req, res) => {
+  res.send("about");
+});
+
+app.get("/weather", (req, res) => {
+  res.send("The current weather is nice");
+});
+
+// any other route that does not exist
+app.use((req, res) => {
+  res.status(404).send("Page not found");
 });
 
 const PORT = 3000;
