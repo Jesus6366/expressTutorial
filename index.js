@@ -5,27 +5,28 @@ const express = require("express");
 const app = express();
 
 // routing / routes
-app.get("/products", (req, res) => {
-  // validate data
-  // query a database
-  // process data
-  res.send("product list ");
+app.get("/", (req, res) => {
+  res.send("Hello world");
 });
 
-app.post("/products", (req, res) => {
-  res.send("creating products... ");
+app.get("/myfile", (req, res) => {
+  res.sendFile("./README.md", { root: __dirname });
 });
 
-app.put("/products", (req, res) => {
-  res.send("uptading a product");
+app.get("/user", (req, res) => {
+  res.json({
+    name: "jesus",
+    lastname: "martha",
+    age: 34,
+    points: [1, 2, 3],
+    adress: {
+      city: "new york",
+    },
+  });
 });
 
-app.delete("/products", (req, res) => {
-  res.send("deleting a product");
-});
-
-app.patch("/products", (req, res) => {
-  res.send("updating a part of a product...");
+app.get("/isAlive", (req, res) => {
+  res.sendStatus(204);
 });
 
 const PORT = 3000;
